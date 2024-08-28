@@ -1,0 +1,39 @@
+import 'package:flutter/material.dart';
+import 'package:CampusConnect/Library/BooksPage.dart';
+
+class MajorTile extends StatelessWidget {
+  final String major;
+  final List<String> books;
+
+  MajorTile({
+    required this.major,
+    required this.books,
+
+  });
+
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text(
+        major,
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      leading: Icon(Icons.school_outlined),
+      trailing: Icon(Icons.keyboard_arrow_right),
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => BooksPage(
+              major: major,
+              books: books,
+            ),
+          ),
+        ); 
+      },
+    );
+  }
+}
